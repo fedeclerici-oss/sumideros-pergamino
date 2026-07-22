@@ -1,1 +1,3 @@
 .claude/
+config.json
+__pycache__/
