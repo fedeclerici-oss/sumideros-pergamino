@@ -264,7 +264,7 @@ async function init() {
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; OpenStreetMap &copy; CARTO', subdomains: 'abcd', maxZoom: 20
   }).addTo(map);
-  cluster = L.markerClusterGroup({ maxClusterRadius: 45, disableClusteringAtZoom: 18 });
+  cluster = L.markerClusterGroup({ maxClusterRadius: 40, disableClusteringAtZoom: 16 });
 
   allMarkers = FEATURES.map(rebuildMarker);
   renderMarkers(allMarkers);
