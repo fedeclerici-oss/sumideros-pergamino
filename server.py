@@ -307,22 +307,22 @@ class Handler(BaseHTTPRequestHandler):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Sumideros · Acceso</title>
-<meta name="theme-color" content="#0a0a0b">
+<meta name="theme-color" content="#ffffff">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#0a0a0b;color:#f0eff5;font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;}
-.card{background:#111113;border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:40px 36px;width:100%;max-width:380px;}
+body{background:#ffffff;color:#17171a;font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;}
+.card{background:#ffffff;border:1px solid rgba(0,0,0,0.1);border-radius:12px;padding:40px 36px;width:100%;max-width:380px;box-shadow:0 4px 20px rgba(0,0,0,.06);}
 .logo{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:.03em;text-align:center;margin-bottom:4px;}
 .logo span{color:#e63329;}
-.subtitle{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#5a5968;text-align:center;margin-bottom:32px;}
+.subtitle{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#8a8a94;text-align:center;margin-bottom:32px;}
 .field{margin-bottom:16px;}
-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#5a5968;display:block;margin-bottom:6px;}
-input{width:100%;background:#18181c;border:1px solid rgba(255,255,255,0.07);border-radius:6px;padding:12px 14px;font-family:'DM Mono',monospace;font-size:14px;color:#f0eff5;outline:none;}
+label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#8a8a94;display:block;margin-bottom:6px;}
+input{width:100%;background:#f0f0f2;border:1px solid rgba(0,0,0,0.1);border-radius:6px;padding:12px 14px;font-family:'DM Mono',monospace;font-size:14px;color:#17171a;outline:none;}
 input:focus{border-color:#e63329;}
 .btn{width:100%;background:#e63329;color:#fff;border:none;border-radius:6px;padding:14px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.1em;cursor:pointer;margin-top:8px;}
 .btn:hover{background:#ff4a3f;}
-.error{background:rgba(230,51,41,.1);border:1px solid rgba(230,51,41,.3);border-radius:6px;padding:10px 14px;font-family:'DM Mono',monospace;font-size:10px;color:#e63329;margin-bottom:16px;display:none;}
+.error{background:rgba(230,51,41,.08);border:1px solid rgba(230,51,41,.3);border-radius:6px;padding:10px 14px;font-family:'DM Mono',monospace;font-size:10px;color:#c92a1f;margin-bottom:16px;display:none;}
 .error.visible{display:block;}
 </style>
 </head>
