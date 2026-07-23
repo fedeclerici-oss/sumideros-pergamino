@@ -17,11 +17,12 @@ SCOPES = [
     "https://www.googleapis.com/auth/drive.file",
 ]
 
-# ---- Config: env vars (Railway) con fallback a config.json (local) ----
+# ---- Config: env vars (Railway/Render) con fallback a config.json (local) ----
 CONFIG = {}
 for key, env in [
     ("login_user", "LOGIN_USER"),
     ("login_pass", "LOGIN_PASS"),
+    ("users_json", "USERS_JSON"),
     ("sheet_id", "SHEET_ID"),
     ("drive_folder_id", "DRIVE_FOLDER_ID"),
     ("google_service_account_json", "GOOGLE_SERVICE_ACCOUNT_JSON"),
@@ -38,6 +39,15 @@ except FileNotFoundError:
     pass
 
 SESSIONS = {}  # token -> {"user": ...}
+
+
+def get_users():
+    """Lista de usuarios validos: USERS_JSON (varios) o LOGIN_USER/LOGIN_PASS (uno solo)."""
+    if CONFIG.get("users_json"):
+        return json.loads(CONFIG["users_json"])
+    if CONFIG.get("login_user") and CONFIG.get("login_pass"):
+        return [{"user": CONFIG["login_user"], "pass": CONFIG["login_pass"]}]
+    return []
 
 
 def make_token():
@@ -252,9 +262,10 @@ class Handler(BaseHTTPRequestHandler):
             if self.path == "/api/login":
                 body = json.loads(raw)
                 u, p = body.get("user", "").strip(), body.get("pass", "")
-                if u == CONFIG.get("login_user") and p == CONFIG.get("login_pass") and u:
+                matched = next((usr for usr in get_users() if usr["user"] == u and usr["pass"] == p and u), None)
+                if matched:
                     token = make_token()
-                    SESSIONS[token] = {"user": u}
+                    SESSIONS[token] = {"user": matched["user"]}
                     self.send_response(200)
                     self.send_header("Content-Type", "application/json")
                     self.send_header("Set-Cookie", f"session={token}; Path=/; HttpOnly; SameSite=Strict; Max-Age=86400")
